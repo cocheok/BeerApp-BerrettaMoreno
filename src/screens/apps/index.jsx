@@ -1,7 +1,7 @@
 import React from 'react'
 import { View } from 'react-native'
-import { styles } from '../../styles';
-const HomeMenu = () => {
+ import { styles } from '../../styles';
+const Apps = () => {
   return (
     <View style={styles.container}>
         
@@ -10,4 +10,4 @@ const HomeMenu = () => {
   )
 }
 
-export default HomeMenu;
+export default Apps;

@@ -4,7 +4,7 @@ import { styles } from '../../styles';
 import { AddItem, CustomModal, TaskList } from '../../components';
 import { colors } from '../../constants/theme/colors';
 
-const Ingredients = () => {
+const Elements = () => {
   const [task, setTask] = useState('');
   const [tasks, setTasks] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -87,4 +87,4 @@ const Ingredients = () => {
 }
 
 
-export default Ingredients;
+export default Elements;

@@ -1,27 +1,29 @@
 import React, { useState } from 'react';
-import { View } from 'react-native';
+import { View, ActivityIndicator } from 'react-native';
 import { styles } from './styles';
 import Header from './components/header';
 import HomeMenu from './screens/home';
-import Ingredients from './screens/ingredients';
-import { HOME, INGREDIENTS } from './constants';
+import Elements from './screens/elements';
+import { HOME, ELEMENTS, colors } from './constants';
+import AppNavigator from './navigation';
+import { useFonts } from 'expo-font';
+
 
 const App = () => {
-  const [selection, setSelection] = useState(HOME);
-  const Content = () => {
-     switch(selection) {
-      case INGREDIENTS:
-        return <Ingredients setSelection={setSelection}/>;
-      default:
-        return <HomeMenu setSelection={setSelection}/>;
-     }};
-
-  return (
-    <View style={styles.container}>
-      <Header title="Beer App" />
-      <Content />
-    </View>
-  );
+  const [loaded] = useFonts({
+    'Bitter-Regular': require('../assets/fonts/Bitter-Regular.ttf'),
+    'Bitter-Bold': require('../assets/fonts/Bitter-Bold.ttf'),
+    'Bitter-Light': require('../assets/fonts/Bitter-Light.ttf'),
+    'Bitter-Medium': require('../assets/fonts/Bitter-Medium.ttf'),
+  });
+  if (!loaded) {
+    return (
+      <View style={styles.container}>
+        <ActivityIndicator size="large" color={colors.primary} />
+      </View>
+    );
+  }
+  return <AppNavigator />;
 }
 
 
