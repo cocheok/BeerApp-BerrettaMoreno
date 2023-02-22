@@ -7,6 +7,8 @@ import Elements from './screens/elements';
 import { HOME, ELEMENTS, colors } from './constants';
 import AppNavigator from './navigation';
 import { useFonts } from 'expo-font';
+import { Provider } from 'react-redux';
+
 
 
 const App = () => {
@@ -19,11 +21,15 @@ const App = () => {
   if (!loaded) {
     return (
       <View style={styles.container}>
-        <ActivityIndicator size="large" color={colors.primary} />
+        <ActivityIndicator size="large" color={THEME.colors.primary} />
       </View>
     );
   }
-  return <AppNavigator />;
+  return (
+    <Provider store={store}>
+      <AppNavigator />
+    </Provider>
+  );
 }
 
 
